@@ -11,6 +11,7 @@ public class TesteUsuarioDAO {
 		testeBuscarTodos();
 		testeAlterarUsuario();
 		testeBuscarTodos();
+		testeBuscarUsuario();
 		limparBanco();
 	}
 	
@@ -52,6 +53,19 @@ public class TesteUsuarioDAO {
 	
 	private static void testeBuscarUsuario() {
 		Scanner leitor = new Scanner(System.in);
+		UsuarioDAO usuDao = new UsuarioDAO();
+		System.out.println("Digite o nome do usuário que deseja buscar: ");
+		String nome = leitor.next();
+		
+		List<Usuario> resultadoBusca = usuDao.buscarUsuario(nome);
+		
+		System.out.println("Resultado(s): ");
+		
+		for(Usuario usuario: resultadoBusca) {
+			System.out.println(usuario.getNome() +  " "  + usuario.getSobrenome());
+		}
+		
+		leitor.close();
 	}
 	
 	private static void limparBanco() {

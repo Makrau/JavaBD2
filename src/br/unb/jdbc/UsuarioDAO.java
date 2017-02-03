@@ -40,14 +40,14 @@ public class UsuarioDAO {
 	}
 	
 	public List<Usuario> buscarUsuario(String nome) {
-		String sql = "SELECT nome, sobrenome FROM javaweb.usuario WHERE nome LIKE ?";
+		String sql = "SELECT * FROM javaweb.usuario WHERE nome LIKE ?";
 		List<Usuario> lista = new ArrayList<Usuario> ();
 		
 		con = Conexao.getConnection();
 		
 		try {
 			PreparedStatement preparador = con.prepareStatement(sql);
-			preparador.setString(1, nome);
+			preparador.setString(1, "%" + nome + "%");
 			ResultSet resultado = preparador.executeQuery();
 			
 			while(resultado.next()) {
