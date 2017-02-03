@@ -7,22 +7,11 @@ import java.util.Scanner;
 
 public class TesteUsuarioDAO {
 	public static void main(String[] args) {
-		int opcao = 0;
-		
-		imprimirMenu();
-		
 		testeCadastrar();
 		testeBuscarTodos();
+		testeAlterarUsuario();
+		testeBuscarTodos();
 		limparBanco();
-	}
-	
-	private static void imprimirMenu() {
-		System.out.println("Escolha a opcao desejada:");
-		System.out.println("1) Cadastrar usuário");
-		System.out.println("2) Buscar usuário");
-		System.out.println("3) Apagar usuário");
-		System.out.println("4) Listar todos usuários");
-		System.out.println("5) Limpar base de dados");
 	}
 	
 	private static void testeCadastrar() {
@@ -49,6 +38,20 @@ public class TesteUsuarioDAO {
 		for(Usuario usuario: listaResultado) {
 			System.out.println(usuario.getNome() + " " + usuario.getSobrenome());
 		}
+	}
+	
+	private static void testeAlterarUsuario() {
+		UsuarioDAO usuDao = new UsuarioDAO();
+		Usuario usu =  new Usuario();
+		usu.setNome("Marcos");
+		usu.setSobrenome("Antonio");
+		
+		usuDao.atualizarRegistro("Carlos", usu);
+		
+	}
+	
+	private static void testeBuscarUsuario() {
+		Scanner leitor = new Scanner(System.in);
 	}
 	
 	private static void limparBanco() {
